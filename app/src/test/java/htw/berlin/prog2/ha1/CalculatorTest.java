@@ -103,7 +103,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should allow to delete the previously entered digit to be deleted")
+    @DisplayName("should allow to delete the previously entered digit")
     void testDeleteDigit() {
         Calculator calc = new Calculator();
 
@@ -115,6 +115,24 @@ class CalculatorTest {
         calc.pressEqualsKey();
 
         String expected = "7";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should allow for the calculation of multiple numbers together")
+    void testMultipleCalculation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(4);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(6);
+        calc.pressEqualsKey();
+
+        String expected = "12";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
