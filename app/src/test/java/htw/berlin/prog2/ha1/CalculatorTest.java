@@ -121,7 +121,7 @@ class CalculatorTest {
     }
 
     @Test
-    @DisplayName("should allow for the calculation of multiple numbers together")
+    @DisplayName("should allow the calculation of multiple numbers together")
     void testMultipleCalculation() {
         Calculator calc = new Calculator();
 

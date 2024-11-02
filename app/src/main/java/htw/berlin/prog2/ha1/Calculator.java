@@ -70,7 +70,15 @@ public class Calculator {
      * @param operation "+" für Addition, "-" für Substraktion, "x" für Multiplikation, "/" für Division
      */
     public void pressBinaryOperationKey(String operation) {
-        latestValue = Double.parseDouble(screen);
+        latestValue = switch (latestOperation) {
+            case "+" -> latestValue + Double.parseDouble(screen);
+            case "-" -> latestValue - Double.parseDouble(screen);
+            case "x" -> latestValue * Double.parseDouble(screen);
+            case "/" -> latestValue / Double.parseDouble(screen);
+            case "" -> Double.parseDouble(screen);
+            default -> throw new IllegalArgumentException();
+        };
+        screen = String.valueOf(latestValue);
         latestOperation = operation;
     }
 
